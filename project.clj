@@ -1,7 +1,7 @@
-(defproject puppetlabs/dujour-version-check "1.0.1-SNAPSHOT"
+(defproject org.openvoxproject/dujour-version-check "1.0.1-SNAPSHOT"
   :description "Dujour Version Check library"
 
-  :parent-project {:coords [puppetlabs/clj-parent "5.2.6"]
+  :parent-project {:coords [org.openvoxproject/clj-parent "7.4.1-SNAPSHOT"]
                    :inherit [:managed-dependencies]}
 
   :plugins [[lein-parent "0.3.8"]]
@@ -9,25 +9,22 @@
   :dependencies [[org.clojure/clojure]
                  [org.clojure/tools.logging]
                  [prismatic/schema]
-                 [puppetlabs/http-client]
+                 [org.openvoxproject/http-client]
                  [ring/ring-codec]
                  [cheshire]
                  [trptcolin/versioneer]
                  [slingshot]]
 
-  :repositories [["releases" "https://artifactory.delivery.puppetlabs.net/artifactory/clojure-releases__local/"]
-                 ["snapshots" "https://artifactory.delivery.puppetlabs.net/artifactory/clojure-snapshots__local/"]]
-
-  :deploy-repositories [["releases" {:url "https://clojars.org/repo"
-                                     :username :env/clojars_jenkins_username
-                                     :password :env/clojars_jenkins_password
+  :deploy-repositories [["clojars" {:url "https://clojars.org/repo"
+                                     :username :env/CLOJARS_USERNAME
+                                     :password :env/CLOJARS_PASSWORD
                                      :sign-releases false}]]
 
   :profiles {:provided {:dependencies [[org.bouncycastle/bcpkix-jdk18on]]}
-             :defaults {:dependencies [[puppetlabs/trapperkeeper :classifier "test" :scope "test"]
-                                       [puppetlabs/kitchensink :classifier "test" :scope "test"]
-                                       [puppetlabs/trapperkeeper-webserver-jetty9]
-                                       [puppetlabs/trapperkeeper-webserver-jetty9 :classifier "test"]
+             :defaults {:dependencies [[org.openvoxproject/trapperkeeper :classifier "test" :scope "test"]
+                                       [org.openvoxproject/kitchensink :classifier "test" :scope "test"]
+                                       [org.openvoxproject/trapperkeeper-webserver-jetty9]
+                                       [org.openvoxproject/trapperkeeper-webserver-jetty9 :classifier "test"]
                                        [ring-mock "0.1.5"]]}
              :dev [:defaults {:dependencies [[org.bouncycastle/bcpkix-jdk18on]]}]
              :fips [:defaults {:dependencies [[org.bouncycastle/bctls-fips]
@@ -43,5 +40,6 @@
                                                   ["-Djava.security.properties==./dev-resources/java.security.jdk8-fips"]
                                                   (throw unsupported-ex))
                                               11 ["-Djava.security.properties==./dev-resources/java.security.jdk11-fips"]
+                                              17 ["-Djava.security.properties==./dev-resources/java.security.jdk17-fips"]
+                                              21 ["-Djava.security.properties==./dev-resources/java.security.jdk21-fips"]
                                               (throw unsupported-ex)))}]})
-
