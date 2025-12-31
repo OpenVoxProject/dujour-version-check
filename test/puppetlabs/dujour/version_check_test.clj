@@ -4,7 +4,7 @@
             [puppetlabs.dujour.version-check :refer :all]
             [puppetlabs.kitchensink.core :as ks]
             [puppetlabs.trapperkeeper.testutils.logging :refer [with-test-logging]]
-            [puppetlabs.trapperkeeper.testutils.webserver :as jetty9]
+            [puppetlabs.trapperkeeper.testutils.webserver :as jetty10]
             [ring.util.codec :as codec]
             [schema.test :as schema-test]
             [slingshot.test]))
@@ -79,7 +79,7 @@
 (deftest test-check-for-update
   (testing "logs the correct version information during a valid version-check"
     (with-test-logging
-      (jetty9/with-test-webserver
+      (jetty10/with-test-webserver
         return-all-as-message-app port
         (let [return-val
               (check-for-update {:certname "some-certname" :cacert "some-cacert" :product-name "foo"}
@@ -90,7 +90,7 @@
 
   (testing "filters out extra parameters"
     (with-test-logging
-      (jetty9/with-test-webserver
+      (jetty10/with-test-webserver
         return-all-as-message-app port
         (let [return-val
               (check-for-update {:certname "some-certname"
@@ -106,7 +106,7 @@
 
   (testing "allows but does not return extra response fields"
     (with-test-logging
-      (jetty9/with-test-webserver extra-fields-app port
+      (jetty10/with-test-webserver extra-fields-app port
         (is (= [:version :newer :link :product :message :whitelist]
                (keys (check-for-update {:certname "some-certname"
                                         :cacert "some-cacert"
@@ -117,7 +117,7 @@
 (deftest test-send-telemetry
   (testing "does not send the actual certname or cacert"
     (with-test-logging
-      (jetty9/with-test-webserver return-all-as-message-app port
+      (jetty10/with-test-webserver return-all-as-message-app port
         (let [certname "some-certname"
               cacert "some-cacert"
               return-val (send-telemetry {:certname certname
@@ -133,7 +133,7 @@
 
   (testing "sends agent_os instead of agent-os"
     (with-test-logging
-      (jetty9/with-test-webserver return-all-as-message-app port
+      (jetty10/with-test-webserver return-all-as-message-app port
         (let [agent-os {"debian" 15 "centos" 5}
               return-val (send-telemetry {:agent-os agent-os
                                           :product-name "foo"
@@ -145,7 +145,7 @@
 
   (testing "sends puppet_agent_versions instead of puppet-agent-versions"
     (with-test-logging
-      (jetty9/with-test-webserver return-all-as-message-app port
+      (jetty10/with-test-webserver return-all-as-message-app port
         (let [puppet-agent-versions {"1.6.7" 15 "1.4.5" 5}
               return-val (send-telemetry {:puppet-agent-versions puppet-agent-versions
                                           :product-name "foo"
@@ -157,7 +157,7 @@
 
   (testing "doesn't clobber agent_os"
     (with-test-logging
-      (jetty9/with-test-webserver return-all-as-message-app port
+      (jetty10/with-test-webserver return-all-as-message-app port
         (let [agent_os {"debian" 15 "centos" 5}
               return-val (send-telemetry {:agent_os agent_os
                                           :product-name "foo"
@@ -169,7 +169,7 @@
 
   (testing "only submits agent_os if both agent-os and agent_os are present"
     (with-test-logging
-      (jetty9/with-test-webserver return-all-as-message-app port
+      (jetty10/with-test-webserver return-all-as-message-app port
         (let [agent_os {"debian" 15 "centos" 5}
               agent-os {"debian" 20 "centos" 10}
               return-val (send-telemetry {:agent_os agent_os
@@ -184,7 +184,7 @@
 
   (testing "sends the version number"
     (with-test-logging
-      (jetty9/with-test-webserver return-all-as-message-app port
+      (jetty10/with-test-webserver return-all-as-message-app port
         (let [return-val
               (send-telemetry {:product-name "foo"
                                :version "9.4"}
@@ -194,7 +194,7 @@
 
   (testing "allows omitting certname and cacert for backwards compatibility"
     (with-test-logging
-      (jetty9/with-test-webserver return-all-as-message-app port
+      (jetty10/with-test-webserver return-all-as-message-app port
         (let [return-val
               (send-telemetry {:product-name "foo"
                                :database-version "9.4"}
@@ -205,7 +205,7 @@
 (deftest error-handling-update
   (testing "throws a slingshot exception when there is a connection error"
     (with-test-logging
-      (jetty9/with-test-webserver return-all-as-message-app port
+      (jetty10/with-test-webserver return-all-as-message-app port
         (is (thrown+? [:kind :puppetlabs.dujour.version-check/connection-error]
                       (check-for-update {:product-name "foo"
                                          :database-version "9.4"}
@@ -213,7 +213,7 @@
 
   (testing "throws a slingshot exception when an error is returned by the server"
     (with-test-logging
-      (jetty9/with-test-webserver server-error-app port
+      (jetty10/with-test-webserver server-error-app port
         (is (thrown+? [:kind :puppetlabs.dujour.version-check/http-error-code]
                       (check-for-update {:product-name "foo"
                                          :database-version "9.4"}
@@ -221,21 +221,21 @@
 
   (testing "throws a slingshot exception when the server returns a bad response (catches apache http exceptions)"
     (with-test-logging
-      (jetty9/with-test-webserver malformed-response-app port
+      (jetty10/with-test-webserver malformed-response-app port
         (is (thrown+? [:kind :puppetlabs.dujour.version-check/connection-error]
                       (check-for-update {:product-name "foo"}
                                         (format "http://localhost:%s" port)))))))
 
   (testing "throws a slingshot exception when the server returns valid but unexpected json"
     (with-test-logging
-      (jetty9/with-test-webserver empty-response-app port
+      (jetty10/with-test-webserver empty-response-app port
         (is (thrown+? [:kind :puppetlabs.dujour.version-check/unexpected-response]
                       (check-for-update {:product-name "foo"}
                                         (format "http://localhost:%s" port)))))))
 
   (testing "throws a slingshot exception when the server returns a malformed body"
     (with-test-logging
-      (jetty9/with-test-webserver malformed-body-app port
+      (jetty10/with-test-webserver malformed-body-app port
         (is (thrown+? [:kind :puppetlabs.dujour.version-check/unexpected-response]
                       (check-for-update {:product-name "foo"}
                                         (format "http://localhost:%s" port))))))))
@@ -243,7 +243,7 @@
 (deftest error-handling-telemetry
   (testing "throws a slingshot exception when there is a connection error"
     (with-test-logging
-      (jetty9/with-test-webserver return-all-as-message-app port
+      (jetty10/with-test-webserver return-all-as-message-app port
         (is (thrown+? [:kind :puppetlabs.dujour.version-check/connection-error]
                       (send-telemetry {:product-name "foo"
                                        :database-version "9.4"}
@@ -251,7 +251,7 @@
 
   (testing "throws a slingshot exception when an error is returned by the server"
     (with-test-logging
-      (jetty9/with-test-webserver server-error-app port
+      (jetty10/with-test-webserver server-error-app port
         (is (thrown+? [:kind :puppetlabs.dujour.version-check/http-error-code]
                       (send-telemetry {:product-name "foo"
                                        :database-version "9.4"}
@@ -260,7 +260,7 @@
 (deftest test-check-for-updates
   (testing "returns a future that can be dereferenced"
     (with-test-logging
-      (jetty9/with-test-webserver return-all-as-message-app port
+      (jetty10/with-test-webserver return-all-as-message-app port
         (let [return-val (promise)
               callback-fn (fn [resp] (deliver return-val resp) "return string")
               future (check-for-updates! {:product-name "foo"
@@ -273,9 +273,9 @@
 (deftest test-get-version-string
   (testing "get-version-string returns the correct version string"
     (with-test-logging
-      (jetty9/with-test-webserver
+      (jetty10/with-test-webserver
         return-all-as-message-app port
-        (let [version-string (get-version-string "trapperkeeper-webserver-jetty9" "puppetlabs")]
+        (let [version-string (get-version-string "trapperkeeper-webserver-jetty10" "puppetlabs")]
           (is (not (.isEmpty version-string)))
           (is (re-matches #"^\d+.\d+.\d+" version-string)))))))
 

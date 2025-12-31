@@ -1,13 +1,12 @@
 # version-check-service
 
-[![Build Status](https://travis-ci.org/puppetlabs/dujour-version-check.png?branch=master)](https://travis-ci.org/puppetlabs/dujour-version-check) 
-[![Clojars Project](https://img.shields.io/clojars/v/puppetlabs/dujour-version-check.svg)](https://clojars.org/puppetlabs/dujour-version-check)
+[![Clojars Project](https://img.shields.io/clojars/v/org.openvoxproject/dujour-version-check.svg)](https://clojars.org/org.openvoxproject/dujour-version-check)
 
 This library allows you to perform version checks with dujour. To use this in your project,
 add the following to your `project.clj` file:
 
 ```
-[puppetlabs/dujour-version-check "0.1.2"]
+[org.openvoxproject/dujour-version-check "0.1.2"]
 
 ```
 
@@ -42,26 +41,3 @@ desired artifact as a string.
 Copyright © 2014 Puppet Labs
 
 Distributed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
-
-Support
--------
-
-Please log tickets and issues at our [JIRA
-tracker](http://tickets.puppetlabs.com).  A [mailing
-list](https://groups.google.com/forum/?fromgroups#!forum/puppet-users) is
-available for asking questions and getting help from others. In addition there
-is an active #puppet channel on Freenode.
-
-We use semantic version numbers for our releases, and recommend that users stay
-as up-to-date as possible by upgrading to patch releases and minor releases as
-they become available.
-
-Bugfixes and ongoing development will occur in minor releases for the current
-major version. Security fixes will be backported to a previous major version on
-a best-effort basis, until the previous major version is no longer maintained.
-
-Long-term support, including security patches and bug fixes, is available for
-commercial customers. Please see the following page for more details:
-
-[Puppet Enterprise Support
-Lifecycle](http://puppetlabs.com/misc/puppet-enterprise-lifecycle)
