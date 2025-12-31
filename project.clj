@@ -25,8 +25,8 @@
   :profiles {:provided {:dependencies [[org.bouncycastle/bcpkix-jdk18on]]}
              :defaults {:dependencies [[org.openvoxproject/trapperkeeper :classifier "test" :scope "test"]
                                        [org.openvoxproject/kitchensink :classifier "test" :scope "test"]
-                                       [org.openvoxproject/trapperkeeper-webserver-jetty9]
-                                       [org.openvoxproject/trapperkeeper-webserver-jetty9 :classifier "test"]
+                                       [org.openvoxproject/trapperkeeper-webserver-jetty10]
+                                       [org.openvoxproject/trapperkeeper-webserver-jetty10 :classifier "test"]
                                        [ring-mock "0.1.5"]]}
              :dev [:defaults {:dependencies [[org.bouncycastle/bcpkix-jdk18on]]}]
              :fips [:defaults {:dependencies [[org.bouncycastle/bctls-fips]
