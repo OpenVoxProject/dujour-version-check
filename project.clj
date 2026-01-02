@@ -1,12 +1,12 @@
-(defproject org.openvoxproject/dujour-version-check "1.0.2-SNAPSHOT"
+(defproject org.openvoxproject/dujour-version-check "1.1.0-SNAPSHOT"
   :description "Dujour Version Check library"
   :license {:name "Apache-2.0"
             :url "https://www.apache.org/licenses/LICENSE-2.0.txt"}
 
-  :parent-project {:coords [org.openvoxproject/clj-parent "7.5.1"]
+  :parent-project {:coords [org.openvoxproject/clj-parent "7.6.3"]
                    :inherit [:managed-dependencies]}
 
-  :plugins [[lein-parent "0.3.8"]]
+  :plugins [[lein-parent "0.3.9"]]
 
   :dependencies [[org.clojure/clojure]
                  [org.clojure/tools.logging]
