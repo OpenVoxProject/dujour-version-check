@@ -15,7 +15,7 @@
 
 (deftest test-get-coords
   (testing "group-id should use the default if not specified"
-    (is (= {:group-id    "puppetlabs.packages"
+    (is (= {:group-id    "org.openvoxproject.packages"
             :artifact-id "foo"}
            (get-coords "foo"))))
   (testing "should use group-id if specified"
@@ -275,7 +275,7 @@
     (with-test-logging
       (jetty10/with-test-webserver
         return-all-as-message-app port
-        (let [version-string (get-version-string "trapperkeeper-webserver-jetty10" "puppetlabs")]
+        (let [version-string (get-version-string "trapperkeeper-webserver-jetty10" "org.openvoxproject")]
           (is (not (.isEmpty version-string)))
           (is (re-matches #"^\d+.\d+.\d+" version-string)))))))
 
