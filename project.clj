@@ -15,6 +15,7 @@
   ;; because it is a dep of a dep with a different version, move it here.
   :managed-dependencies [[org.clojure/clojure "1.12.4"]
                          [commons-codec "1.20.0"]
+                         [clj-time "0.15.2"]
 
                          [org.bouncycastle/bcpkix-jdk18on "1.83"]
                          [org.bouncycastle/bcpkix-fips "1.0.8"]
@@ -44,7 +45,7 @@
 
   :profiles {:provided {:dependencies [[org.bouncycastle/bcpkix-jdk18on]]}
              :defaults {:dependencies [[org.openvoxproject/trapperkeeper :classifier "test" :scope "test"]
-                                       [org.openvoxproject/kitchensink "3.5.3" :classifier "test" :scope "test"]
+                                       [org.openvoxproject/kitchensink "3.5.4" :classifier "test" :scope "test"]
                                        [org.openvoxproject/trapperkeeper-webserver-jetty10]
                                        [org.openvoxproject/trapperkeeper-webserver-jetty10 :classifier "test"]
                                        [ring-mock "0.1.5"]]}
