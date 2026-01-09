@@ -35,7 +35,7 @@
                  [trptcolin/versioneer "0.2.0"]
                  [slingshot "0.12.2"]
 
-                 [org.openvoxproject/http-client "2.2.0"]]
+                 [org.openvoxproject/http-client "2.2.1"]]
 
   :deploy-repositories [["releases" {:url "https://clojars.org/repo"
                                      :username :env/CLOJARS_USERNAME
