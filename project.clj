@@ -27,7 +27,7 @@
                          [org.openvoxproject/trapperkeeper-webserver-jetty10 ~trapperkeeper-webserver-jetty10-version :classifier "test"]]
 
   :dependencies [[org.clojure/clojure]
-                 [org.clojure/tools.logging "1.2.4"]
+                 [org.clojure/tools.logging "1.3.1"]
 
                  [prismatic/schema "1.4.1"]
                  [ring/ring-codec "1.3.0"]
