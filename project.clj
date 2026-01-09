@@ -29,7 +29,7 @@
   :dependencies [[org.clojure/clojure]
                  [org.clojure/tools.logging "1.2.4"]
 
-                 [prismatic/schema "1.1.12"]
+                 [prismatic/schema "1.4.1"]
                  [ring/ring-codec "1.3.0"]
                  [cheshire "5.10.2"]
                  [trptcolin/versioneer "0.2.0"]
