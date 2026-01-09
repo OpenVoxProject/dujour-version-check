@@ -30,7 +30,7 @@
                  [org.clojure/tools.logging "1.2.4"]
 
                  [prismatic/schema "1.1.12"]
-                 [ring/ring-codec "1.1.2"]
+                 [ring/ring-codec "1.3.0"]
                  [cheshire "5.10.2"]
                  [trptcolin/versioneer "0.2.0"]
                  [slingshot "0.12.2"]
