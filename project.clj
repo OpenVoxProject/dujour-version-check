@@ -1,5 +1,5 @@
 (def trapperkeeper-version "4.3.2")
-(def trapperkeeper-webserver-jetty10-version "1.1.0")
+(def trapperkeeper-webserver-jetty10-version "1.1.2")
 
 (defproject org.openvoxproject/dujour-version-check "1.1.1-SNAPSHOT"
   :description "Dujour Version Check library"
