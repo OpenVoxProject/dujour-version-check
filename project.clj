@@ -33,7 +33,7 @@
 
                  [prismatic/schema "1.4.1"]
                  [ring/ring-codec "1.3.0"]
-                 [cheshire "5.13.0"]
+                 [cheshire "6.1.0"]
                  [trptcolin/versioneer "0.2.0"]
                  [slingshot "0.12.2"]
 
