@@ -16,6 +16,7 @@
   :managed-dependencies [[org.clojure/clojure "1.12.4"]
                          [commons-codec "1.20.0"]
                          [clj-time "0.15.2"]
+                         [org.slf4j/slf4j-api "2.0.17"]
 
                          [org.bouncycastle/bcpkix-jdk18on "1.83"]
                          [org.bouncycastle/bcpkix-fips "1.0.8"]
