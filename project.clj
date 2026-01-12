@@ -1,4 +1,4 @@
-(defproject org.openvoxproject/dujour-version-check "1.1.2"
+(defproject org.openvoxproject/dujour-version-check "1.1.3-SNAPSHOT"
   :description "Dujour Version Check library"
   :license {:name "Apache-2.0"
             :url "https://www.apache.org/licenses/LICENSE-2.0.txt"}
