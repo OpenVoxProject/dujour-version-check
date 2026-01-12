@@ -32,8 +32,8 @@
                          [org.openvoxproject/kitchensink "3.5.5" :classifier "test" :scope "test"]
                          [org.openvoxproject/trapperkeeper "4.3.2"]
                          [org.openvoxproject/trapperkeeper "4.3.2" :classifier "test"]
-                         [org.openvoxproject/trapperkeeper-webserver-jetty10 "1.1.2"]
-                         [org.openvoxproject/trapperkeeper-webserver-jetty10 "1.1.2" :classifier "test"]]
+                         [org.openvoxproject/trapperkeeper-webserver-jetty10 "1.1.3"]
+                         [org.openvoxproject/trapperkeeper-webserver-jetty10 "1.1.3" :classifier "test"]]
 
   :dependencies [[org.clojure/clojure]
                  [org.clojure/tools.logging]
