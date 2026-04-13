@@ -28,7 +28,7 @@
                          [org.bouncycastle/bcpkix-fips "1.0.8"]
                          [org.bouncycastle/bc-fips "1.0.2.6"]
                          [org.bouncycastle/bctls-fips "1.0.19"]
-                         [org.openvoxproject/http-client "2.2.3"]
+                         [org.openvoxproject/http-client "2.2.5"]
                          [org.openvoxproject/kitchensink "3.5.5" :classifier "test" :scope "test"]
                          [org.openvoxproject/trapperkeeper "4.3.2"]
                          [org.openvoxproject/trapperkeeper "4.3.2" :classifier "test"]
