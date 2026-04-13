@@ -30,8 +30,8 @@
                          [org.bouncycastle/bctls-fips "1.0.19"]
                          [org.openvoxproject/http-client "2.2.3"]
                          [org.openvoxproject/kitchensink "3.5.5" :classifier "test" :scope "test"]
-                         [org.openvoxproject/trapperkeeper "4.3.2"]
-                         [org.openvoxproject/trapperkeeper "4.3.2" :classifier "test"]
+                         [org.openvoxproject/trapperkeeper "4.3.4"]
+                         [org.openvoxproject/trapperkeeper "4.3.4" :classifier "test"]
                          [org.openvoxproject/trapperkeeper-webserver-jetty10 "1.1.4"]
                          [org.openvoxproject/trapperkeeper-webserver-jetty10 "1.1.4" :classifier "test"]]
 
