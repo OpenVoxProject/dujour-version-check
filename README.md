@@ -1,5 +1,7 @@
 # version-check-service
 
+**As of 22026-04-13, this repository is archived because openvox-server/db don't use it anymore**
+
 [![Clojars Project](https://img.shields.io/clojars/v/org.openvoxproject/dujour-version-check.svg)](https://clojars.org/org.openvoxproject/dujour-version-check)
 
 This library allows you to perform version checks with dujour. To use this in your project,
